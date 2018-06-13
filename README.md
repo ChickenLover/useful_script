@@ -2,6 +2,7 @@
 
 This is a simple script in bash, that will install and configure some useful tools that i use everyday.<br>
 The script now supports only debian-based/ubunti linux distributions
+<h6>inspired by masha nefyak</h6>
 
 # Vim
 Vim become filled with plugins:
