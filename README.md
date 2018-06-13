@@ -11,7 +11,7 @@ Vim become filled with plugins:
     <li>Hit `TAB` to use autocomplition
     <li>Hit `F3` to turn off highlited text after searching and stuff
     <li>Hit `F7` to run pylint over your python script
-    <li>You can now use digraphs by pressing CTRL-k in insert mod (for all lyapas programmers out there)
+    <li>You can now use digraphs by pressing CTRL-k in insert mod (for all LYAPAS programmers out there)
 </ol>
 # Transfer
 You now can use slightly extended transfer command
