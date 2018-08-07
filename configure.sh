@@ -113,6 +113,7 @@ augroup Binary
 augroup END
 " >> ~/.vimrc
 command -v git || yum install -y git || apt install -y git
+command -v curl || yum install -y curl || apt install -y curl
 mkdir -p ~/.vim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
