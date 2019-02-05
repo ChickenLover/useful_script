@@ -1,5 +1,5 @@
-command -v vim || yum install -y vim || apt install -y vim
-command -v xsel || yum install -y xsel || apt install -y xsel
+command -v vim || sudo yum install -y vim || sudo apt install -y vim
+command -v xsel || sudo yum install -y xsel || sudo apt install -y xsel
 echo "set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin() 
 Plugin 'VundleVim/Vundle.vim'
@@ -40,23 +40,6 @@ inoremap <silent> <C-j> <C-O>dd<Down><C-R><C-P>\"<Up>
 \" nnoremap <silent> <C-k> dd<Up>i<C-R><C-P>\"<Up><Esc>
 nnoremap <silent> <C-j> dd<Down>i<C-R><C-P>\"<Esc><Up>
 nnoremap <F3> :set hlsearch!<CR>
-
-digraphs => 8658
-digraphs SE 167
-digraphs -! 8593
-digraphs -> 8594
-digraphs jz 8618
-digraphs nz 8614
-digraphs xr 8853
-digraphs >= 8805
-digraphs =< 8804
-digraphs != 8800
-digraphs mx 8315
-digraphs NO 172
-digraphs NB 8711
-digraphs DE 8710
-digraphs OR 8744
-digraphs == 8660
 
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-H> :Hexmode<CR>
@@ -110,10 +93,9 @@ augroup Binary
   au BufWritePre *.bin endif
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
-augroup END
-" > ~/.vimrc
-command -v git || yum install -y git || apt install -y git
-command -v curl || yum install -y curl || apt install -y curl
+augroup END" >> ~/.vimrc
+command -v git || sudo yum install -y git || sudo apt install -y git
+command -v curl || sudo yum install -y curl || sudo apt install -y curl
 mkdir -p ~/.vim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
