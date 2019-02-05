@@ -111,7 +111,7 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
-" >> ~/.vimrc
+" > ~/.vimrc
 command -v git || yum install -y git || apt install -y git
 command -v curl || yum install -y curl || apt install -y curl
 mkdir -p ~/.vim/bundle/
@@ -119,6 +119,19 @@ git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 echo "
-transfer() { if [ \$# -eq 0 ]; then echo -e \"No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md\"; return 1; fi 
-tmpfile=\$( mktemp -t transferXXX ); if tty -s; then basefile=\$(basename \"\$1\" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file \"\$1\" \"https://transfer.sh/\$basefile\" >> \$tmpfile; else curl --progress-bar --upload-file \"-\" \"https://transfer.sh/\$1\" >> \$tmpfile ; fi; cat \$tmpfile; command -v xsel && cat \$tmpfile | xsel -b; rm -f \$tmpfile; }
-" >> ~/.bashrc
+transfer() {
+    if [ \$# -eq 0 ]; then
+        echo -e \"No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md\";
+        return 1;
+    fi 
+    tmpfile=\$( mktemp -t transferXXX );
+    if tty -s; then
+        basefile=\$(basename \"\$1\" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+        curl --progress-bar --upload-file \"\$\1\" \"http://data.tsu.ru:8090/\$basefile\" >> \$tmpfile;
+    else 
+        curl --progress-bar --upload-file \"-\" \"http://data.tsu.ru:8090/\$1\" >> \$tmpfile ;
+    fi;
+    cat \$tmpfile; command -v xsel && cat \$tmpfile | xsel -b;
+    rm -f \$tmpfile;
+}
+" > ~/.bashrc
