@@ -1,5 +1,7 @@
 command -v vim || sudo yum install -y vim || sudo apt install -y vim
 command -v xsel || sudo yum install -y xsel || sudo apt install -y xsel
+command -v flake8 || sudo yum install -y flake8 || sudo apt install -y flake8
+
 echo "set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin() 
 Plugin 'VundleVim/Vundle.vim'
