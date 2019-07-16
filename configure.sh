@@ -1,3 +1,4 @@
+sudo apt update
 command -v vim || sudo yum install -y vim || sudo apt install -y vim
 command -v xsel || sudo yum install -y xsel || sudo apt install -y xsel
 command -v flake8 || sudo yum install -y flake8 || sudo apt install -y flake8
@@ -26,6 +27,7 @@ set tabstop=4
 set number
 set autoindent
 set shiftwidth=4
+set textwidth=99
 set expandtab
 set smartindent
 set encoding=utf-8
