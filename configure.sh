@@ -1,4 +1,5 @@
 sudo apt update
+sudo apt install xclip maim
 command -v vim || sudo yum install -y vim || sudo apt install -y vim
 command -v xsel || sudo yum install -y xsel || sudo apt install -y xsel
 command -v flake8 || sudo yum install -y flake8 || sudo apt install -y flake8
@@ -97,7 +98,7 @@ augroup Binary
   au BufWritePre *.bin endif
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
-augroup END" >> ~/.vimrc
+augroup END" > ~/.vimrc
 command -v git || sudo yum install -y git || sudo apt install -y git
 command -v curl || sudo yum install -y curl || sudo apt install -y curl
 mkdir -p ~/.vim/bundle/
@@ -113,11 +114,17 @@ transfer() {
     tmpfile=\$( mktemp -t transferXXX );
     if tty -s; then
         basefile=\$(basename \"\$1\" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-        curl --progress-bar --upload-file \"\$\1\" \"http://data.tsu.ru:8090/\$basefile\" >> \$tmpfile;
+        curl --progress-bar --upload-file \"\$1\" \"http://data.tsu.ru:8090/\$basefile\" >> \$tmpfile;
     else 
         curl --progress-bar --upload-file \"-\" \"http://data.tsu.ru:8090/\$1\" >> \$tmpfile ;
     fi;
     cat \$tmpfile; command -v xsel && cat \$tmpfile | xsel -b;
     rm -f \$tmpfile;
 }
-" > ~/.bashrc
+" >> ~/.bashrc
+
+echo "
+takescreen() {
+    maim -s | xclip -selection clipboard -t image/png && notify-send -t 300 "Screenshot copied to clipboard"
+}
+" >> ~/.bashrc
